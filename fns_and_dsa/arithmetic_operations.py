@@ -1,17 +1,20 @@
 # arithmetic_operations.py
 
 def perform_operation(num1, num2, operation):
-    if operation == "add":
+    """Perform basic arithmetic operations."""
+    
+    # Check the operation and perform the corresponding arithmetic operation
+    if operation == 'add':
         return num1 + num2
-    elif operation == "subtract":
+    elif operation == 'subtract':
         return num1 - num2
-    elif operation == "multiply":
+    elif operation == 'multiply':
         return num1 * num2
-    elif operation == "divide":
-        if num2 != 0:
-            return num1 / num2
-        else:
+    elif operation == 'divide':
+        # Check for division by zero
+        if num2 == 0:
             return "Error: Division by zero is not allowed."
+        else:
+            return num1 / num2
     else:
-        return "Error: Invalid operation."
-
+        return "Error: Invalid operation. Please use 'add', 'subtract', 'multiply', or 'divide'."
