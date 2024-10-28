@@ -2,28 +2,26 @@
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
 
-# Check for the definition of global conversion factors
-assert 'FAHRENHEIT_TO_CELSIUS_FACTOR' in globals(), "FAHRENHEIT_TO_CELSIUS_FACTOR is not defined."
-assert 'CELSIUS_TO_FAHRENHEIT_FACTOR' in globals(), "CELSIUS_TO_FAHRENHEIT_FACTOR is not defined."
-assert FAHRENHEIT_TO_CELSIUS_FACTOR == 5 / 9, "Error: Incorrect conversion factor for Fahrenheit to Celsius."
-assert CELSIUS_TO_FAHRENHEIT_FACTOR == 9 / 5, "Error: Incorrect conversion factor for Celsius to Fahrenheit."
+# Check for definition of global conversion factors
+if 'FAHRENHEIT_TO_CELSIUS_FACTOR' not in globals():
+    raise AssertionError("FAHRENHEIT_TO_CELSIUS_FACTOR is not defined.")
+if 'CELSIUS_TO_FAHRENHEIT_FACTOR' not in globals():
+    raise AssertionError("CELSIUS_TO_FAHRENHEIT_FACTOR is not defined.")
 
 def convert_to_celsius(fahrenheit):
     """Convert Fahrenheit to Celsius using the global conversion factor."""
-    print(f"Converting {fahrenheit}F to Celsius...")
     return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
 def convert_to_fahrenheit(celsius):
     """Convert Celsius to Fahrenheit using the global conversion factor."""
-    print(f"Converting {celsius}C to Fahrenheit...")
     return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
 def main():
-    # User interaction for temperature input and validation
+    # User interaction
     try:
         temperature_input = input("Enter the temperature to convert: ")
-
-        # Check for valid numeric temperature input
+        
+        # Validate numeric temperature input
         try:
             temperature = float(temperature_input)
         except ValueError:
@@ -32,7 +30,7 @@ def main():
 
         unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
 
-        # Check if the unit is valid and perform the conversion accordingly
+        # Check if the unit is valid and perform the conversion
         if unit == 'C':
             converted_temp = convert_to_fahrenheit(temperature)
             print(f"{temperature}°C is {converted_temp:.2f}°F")
@@ -46,6 +44,5 @@ def main():
         print(f"An unexpected error occurred: {e}")
 
 if __name__ == "__main__":
-    # Check for user interaction functionality
-    print("Starting Temperature Conversion Tool...")
     main()
+
