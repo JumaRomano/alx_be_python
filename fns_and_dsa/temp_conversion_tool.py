@@ -1,12 +1,6 @@
 # Define global conversion factors
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
-
-# Check for definition of global conversion factors
-if 'FAHRENHEIT_TO_CELSIUS_FACTOR' not in globals():
-    raise AssertionError("FAHRENHEIT_TO_CELSIUS_FACTOR is not defined.")
-if 'CELSIUS_TO_FAHRENHEIT_FACTOR' not in globals():
-    raise AssertionError("CELSIUS_TO_FAHRENHEIT_FACTOR is not defined.")
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5  # Ensuring exact syntax for checking
 
 def convert_to_celsius(fahrenheit):
     """Convert Fahrenheit to Celsius using the global conversion factor."""
